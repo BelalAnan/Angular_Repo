@@ -1,0 +1,51 @@
+1-ng g d age-validator
+(d lhea directive)
+2-
+import { Directive } from '@angular/core';
+import { AbstractControl, Validator, NG_VALIDATORS } from '@angular/forms';
+
+@Directive({
+  selector: '[appAgeValidator]',
+  providers: [{
+    provide: NG_VALIDATORS,
+    useExisting: AgeValidatorDirective,
+    multi: true
+  }]
+})
+export class AgeValidatorDirective implements Validator {
+  validate(control:AbstractControl):{[key:string]:any}|null{
+    if(control.value&&control.value<18)
+    {
+      return {'ageInvalid':true};
+    }
+    return null;
+  }
+
+  constructor() { }
+
+}
+-----------
+3-atb selector directive fl form
+
+  <div class="col-md-8">
+        <input class="form-control" id="age" type="number"
+         placeholder="Enter your age" required 
+         appAgeValidator
+           [(ngModel)]=Student!.age name="age"
+            #ageVar="ngModel"
+      
+       [ngClass]="{'is-invalid':(ageVar.touched||ageVar.dirty)&&!ageVar.valid}"
+            />
+            <span   class="invalid-feedback">
+                <span *ngIf="ageVar.errors?.ageInvalid">
+                  
+                   age must be +18
+                </span>
+             
+            </span>
+
+
+    </div>
+   
+  <br> 
+---

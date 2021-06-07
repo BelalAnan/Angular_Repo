@@ -1,0 +1,204 @@
+<div class="card mt-5">
+
+<div class="card-header">
+    Sign Up
+</div>
+<div class="card-body">
+    <form novalidate  (ngSubmit)="save(signupform)" #signupform="ngForm">
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="firstNameId">
+                    First Name
+            </label>
+            <div class="col-md-8">
+                <input class="form-control" id="firstNameId" type="text"
+                 placeholder="first name is required" required 
+                  minlength="3"
+                   [(ngModel)]=customer.firstName name="firstName"
+                    #firstNameVar="ngModel"
+                    [ngClass]="{'is-invalid':(firstNameVar.touched||firstNameVar.dirty)&&!firstNameVar.valid}"
+                    />
+                    <span class="invalid-feedback">
+                        <span *ngIf="firstNameVar.errors?.required">
+                            please enter your first name
+                        </span>
+                        <span *ngIf="firstNameVar.errors?.minlength">
+                            min length should be 3 characters
+                        </span>
+                    </span>
+
+
+            </div>
+        </div>       
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="lastNameId">
+                    Last Name
+            </label>
+            <div class="col-md-8">
+                <input class="form-control" id="lastNameId" type="text"
+                 placeholder="last name is required" required 
+                  minlength="3"
+                   [(ngModel)]=customer.lastName name="lastName"
+                    #lastNameVar="ngModel"
+                    [ngClass]="{'is-invalid':(lastNameVar.touched||lastNameVar.dirty)&&!lastNameVar.valid}"
+                    />
+                    <span class="invalid-feedback">
+                        <span *ngIf="lastNameVar.errors?.required">
+                            please enter your first name
+                        </span>
+                        <span *ngIf="lastNameVar.errors?.minlength">
+                            min length should be 3 characters
+                        </span>
+                    </span>
+
+
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="emailId">
+                   Email
+            </label>
+            <div class="col-md-8">
+                <input class="form-control" id="emailId" type="text"
+                 placeholder="email is required" required 
+                  minlength="3"
+                   [(ngModel)]=customer.email name="email"
+                    #emailVar="ngModel"
+                    [ngClass]="{'is-invalid':(emailVar.touched||emailVar.dirty)&&!emailVar.valid}"
+                    />
+                    <span class="invalid-feedback">
+                        <span *ngIf="emailVar.errors?.required">
+                            please enter your email
+                        </span>
+                        <span *ngIf="emailVar.errors?.email">
+                           email should be in format
+                        </span>
+                    </span>
+
+
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="sendCatalogId">
+                sendCatalog
+            </label>
+            <div class="col-md-1">
+                <input class="form-control" id="sendCatalogId" type="checkbox"
+                   [(ngModel)]=customer.sendCatalog name="sendCatalog"
+                    #sendCatalogVar="ngModel"
+                    />
+                
+
+
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="street1Id">
+                   Street 1 
+            </label>
+            <div class="col-md-8">
+                <input class="form-control" id="street1Id" type="text"
+                 placeholder="Street 1 is required" required 
+                  minlength="3"
+                   [(ngModel)]=customer.street1 name="street1"
+                    #street1Var="ngModel"
+                    [ngClass]="{'is-invalid':(street1Var.touched||street1Var.dirty)&&!street1Var.valid}"
+                    />
+                    <span class="invalid-feedback">
+                       
+                        <span *ngIf="street1Var.errors?.minlength">
+                            min length should be 3 characters
+                        </span>
+                    </span>
+
+
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="street2Id">
+                   Street 2 
+            </label>
+            <div class="col-md-8">
+                <input class="form-control" id="street1Id" type="text"
+                 placeholder="Street 2 is required" required 
+                  minlength="3"
+                   [(ngModel)]=customer.street2 name="street2"
+                    #street2Var="ngModel"
+                    [ngClass]="{'is-invalid':(street2Var.touched||street2Var.dirty)&&!street2Var.valid}"
+                    />
+                    <span class="invalid-feedback">
+                      
+                        <span *ngIf="street2Var.errors?.minlength">
+                            min length should be 3 characters
+                        </span>
+                    </span>
+
+
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="stateId">
+                state
+            </label>
+            <div class="col-md-8">
+                <input class="form-control" id="stateId" type="text"
+                 placeholder="State  is required" required 
+                
+                   [(ngModel)]=customer.state name="state"
+                    #stateVar="ngModel"
+                    [ngClass]="{'is-invalid':(stateVar.touched||stateVar.dirty)&&!stateVar.valid}"
+                    />
+                   
+
+
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="zipId">
+                   Zip Code 
+            </label>
+            <div class="col-md-8">
+                <input class="form-control" id="zipId" type="text"
+                 placeholder="zip code is required" required 
+                  minlength="3"
+                  maxlength="3"
+                   [(ngModel)]=customer.zip name="zip"
+                    #zipVar="ngModel"
+                    [ngClass]="{'is-invalid':(zipVar.touched||zipVar.dirty)&&!zipVar.valid}"
+                    />
+                    <span class="invalid-feedback">
+                      
+                        <span *ngIf="zipVar.errors?.minlength">
+                            length should be 3 characters
+                        </span>
+                        <span *ngIf="zipVar.errors?.maxlength">
+                            length should be 3 characters
+                        </span>
+                    </span>
+
+
+            </div>
+        </div>
+        
+       <div class="form-group row mb-2">
+           <div class="offset-md-2 col-md-4">
+               <button class="btn btn-primary mr-3"
+               type="submit" style="width:80px"
+               [title]="signupform.valid?'save your entered data':'disabled until form data is valid'"
+               [disabled]="!signupform.valid">Save
+               </button>
+           </div>
+
+       </div>
+        
+    </form>
+</div>
+<br>Dirty: {{signupform.dirty}}
+<br>touched: {{signupform.touched}}
+<br>valid: {{signupform.valid}}
+
+<br>value: {{signupform.value|json}}
+
+
+
+
+</div>

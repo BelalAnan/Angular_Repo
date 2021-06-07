@@ -1,0 +1,63 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-warning" href="#">{{pageTitle}}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-warning active" aria-current="page"  routerLink='/welcome'>Welcome</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning" routerLink='/books'>books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning" routerLink='/products'>products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning" routerLink='/Employees'>Employees</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-warning" routerLink='/Customers'>Sign-up</a>
+          </li>
+          <li class="nav-item" *ngIf="!auth.Isloggedin()">
+            <a class="nav-link text-warning"  routerLink='/Login'>Log-In</a>
+          </li>
+          <li class="nav-item" *ngIf="auth.Isloggedin()" >
+            <a class="nav-link text-warning" routerLink='/Login' (click)="Logout()">Log-Out</a>
+          </li>
+ 
+          <ul class="navbar-nav mr-auto text-right" *ngIf="auth.Isloggedin()">
+            <li class="nav-item">
+                <p class="nav-link text-secondary" href="#">  {{auth.Getuser().unique_name}}</p>
+            </li>
+        </ul>
+          <li class="nav-item dropdown">
+          
+            <ul class="dropdown-menu text-warning" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink='/books'> books</a></li>
+              <li><a class="dropdown-item" routerLink='/products'> products</a></li>
+              <li><a class="dropdown-item" routerLink='/Employees'>Employees</a></li>
+              <li><a class="dropdown-item" routerLink='/Customers'>Sign-up</a></li>
+              <li><a class="dropdown-item" routerLink='/Login'>Log-In</a></li>
+              <li><a class="dropdown-item" routerLink='/Login'>Log out</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+
+ 
+
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

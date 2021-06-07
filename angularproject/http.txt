@@ -1,0 +1,222 @@
+import {httpclientmodule} from '@angular/common/http';
+imports:[httpclientmodule}
+--------------at services
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs'
+constructor(private http:httpclient}
+getAllReaders():Reader[]{
+return allReaders;
+}
+------------------------
+observables:
+all methods return observable
+observables : reperesent set of values
+can be delivered over time
+-----------
+getAllBooks():observable<Book[]>
+{
+return this.http.get<Book[]>('/api/books');
+}
+lazm 7aga rg3a observable ,,lazm t3mlha 
+handle b subscribe
+-----
+this.dataservices.getAllBooks().subscribe(
+
+
+
+);rather than storing returned observable
+in variable and calling method on variable
+f h3mlchain onto function that return 
+observable
+result from observable handles by callback
+functions passed to subscribe functions
+3 callback function
+1-first the function that will contain data
+if call executed successfully wl tanya error
+wl talta callback method brdo ht7sl lma tegy
+kol ldata
+msln hna function take 1 parameter
+(data:Book[])=>this.allbooks=data.
+(
+(err:any)=>console.log(err),
+()=>console.log('all done getting books') //
+bt7sl lma observable is done 
+---------------------
+getAllBooks():observable<book[]>
+{
+console.log("getting books from server")
+return this.http.get<Book[]>('/api/books');
+}
+//get btrg3 jason w mstnyatk t7wlo larray
+---------------------
+fl components :
+ngoninit()
+{
+this.dataservice.getAllBooks().subscribe(
+(data:Book[])=>this.allBooks=data,
+(err:any)=>console.log(err),
+()=>console.log('all done getting books')r
+
+
+);
+---------------------------RXJS operators
+mezt 7aga lma trg3 observable enk momken t3ml 3leha map 
+w tt7km fl data lrg3a w  d men anw3 RXJS operators
+nt7km fl data before returning to components
+import {map,tap} from 'rxjs/operators'
+fa momken n3mlha pipe operation lhea gha map w tap 3la ay ofunction htrg3
+observable
+map bt7wl lrg3 lobject anta 3mlo zay filter kda 
+w tap btsm7lk enk tktb ay code enta 3ayzo abl ma execution bt3 lobservable kolo 
+ytnfz
+msln map btdek fl parameter lobject lasly lrag3
+w b3d kda lma t3ml mapping ,,tap bt5od ka parameter 
+lobject l7slo mapping
+men la5r .pipe.subscribe 
+kda at7mt fl data 3mlt 3leha l3ayezo w 3mlt subscribe lma tegy fl a5r a5odha 3ndy
+--------------------------------------------------
+catcherror d n3mlha f lservice a7sn w mn5lhash twsl llcomponent  w ygbha fl callback method bt3t el error 
+3lshn t3rf twsl error hoa eh bl shakl lanta 3yzo
+--------------------------------------------------------------
+resolvers  :fetch data before navigating
+3lshn mtkonsh empty component ,,if http 
+request is slow ,,the view of component might 
+not be populated with all of expected data when it's 
+first shown to users
+and prevent routing to component
+with errors 
+fa da lbt3mlo resolver ,,3lshn http reequest
+lwo r3gt error twdek component talt
+---------------------
+lwo bsena men 5er resolver
+anta 3ndk component msln be3rd all data
+w dost 3labutton ywdek component by3rd detail
+of data ,,,fa hoa hy3ml routing 3la component
+abl ma y3ml retrieve lldata from database
+fa hna gat reolver 7lt lmoskhla
+----------------------
+resolver gat b2a 3mlt eh ,,click button 
+would trigger resolver to make http 
+request for detail before activiating new
+route
+-----------------
+hoa grb y3ml set time out 
+wl l page gat fadya w b3d kda gat 
+ldata f a7sn 7aga b2a n3ml 
+resolver
+resolver bet3ml men angular service
+w a3ml service asmo 
+book-resover.service.ts
+w 3ml function resolve w 7at goha 
+getallbooks 
+----fa anta 7adad b2a 3ayyez t3ml resolver
+w la msh fr2 m3ak lwo data at2t5rt soia
+--------------------
+interceptors:manuipulate http requests before they're sent to the servers
+manipulate http responses before they are returned back to the app
+interceptor:
+bekon ma ben client and server ,,be5od http request men client y3ml 3leha intercepting  w manpiulating  w y3dl feha 
+w ywdeha l server tany wl 3ks brdo be7sl men lserver ll client
+bs lmeza hna enk msh b7tag t3ml lklm da m3 every request beb3t la b3mlo f interceptor w hoa be3dl 3l kol el requests
+-----------------------------
+firstinterceptor implement httpinterceptor{
+w d services w lazm tb2a provided fl angular module 
+creating specifi http header to all requests
+add-header.interceptors
+-----------------------
+req :da url 
+next da lbero7 3lla kol lrequests
+hoa hna 3ml interceptor m3 ay request
+bero7 lserver be5ly lcontext-body
+application.json
+--
+ldemo ltany 3ml interceptor m3 ay response
+momken t3ml response and request 
+f intersepotr w7d
+a3ml provide fil services w request lawl w b3do response
+---------------
+ng g interceptor <addheader>  
+-------------------------------mwdo3 caching b2a
+cahcing http request provide http response without actually making 
+a network call to server
+w da be2lal traffic wwl time
+3ndna no3en men lcaching:
+1- browser caching 
+2- server side caching
+bs lbrowser a7sn 3lshn msh bro7 ll server tany
+----------------------------
+caching :
+eh lbe7sl 
+simply add request interceptor be5od requet abl maywdeha lserver
+yro7 ybos 3la cahcing lwo l2t response bt3 request hy5do men lcaching
+w msh hytl3 3l server lwo ml2hosh hykml tre2o lserver
+y3ml retieve ldata w whoa rag3 hyro7 yrmy copy men data fl cache w yrg3 
+ydeha llcomponent 
+-----------------------------------------------
+1-service to store http cache request
+service btklm  cache 3n tre2 api
+2-ng generate service  httpcache
+3-imort {HttpResponse} from anguar common http
+4-private requests:any={};
+put(url:string,response:httpResponse<any>):void{
+this.requests[url]=response;//aknha key pair value kda
+
+
+}
+(url : da l being requested from server)
+(response:da lrg3 men server wl hy7slo cached)
+5-get(url:string):httpresponse<any>|undefined{
+retrun this.requests[url];//htrg3 undefinedlwo msh
+mwgod
+}
+6-lwo 7d 3ml add ,,,kda 3ayeez next request to server
+myro7sh lcache w y3dy 3la server 3ltol  w yrg3
+men la5r 3ayez asm7 lcached
+7-
+invalidateurl(url:string):void{
+
+this.requests[url]=undefined;
+}//kda b3ml invalidate llurl
+3ayez a3ml invalidate brdo llentire cache
+invalidateCache():void{
+this.requests={};
+}
+-------------------------------------men hyklm 
+lcache interceptor
+ng g interceptor cache
+w fl constructor
+--------
+1- awl 5ta hashof request lgay men client 
+lwo get h5do w adeha llcache
+lwo msh get hwdeha llnext chain fl interceptor
+if(req.method!=='Get'){
+return next.handle(req)
+}
+tyb hea lwo msh get ,,momken tb2a post update 
+delete w da hysr 3la row fl cashe l3ndo key bt3o
+feha url da
+fa hoa krar ano bdl may3ml empty llurl da bs
+3lshn myktbsh code kter hoa krar eno 
+hy3ml empty llcachedd kolo
+
+lfkra ano shaf 
+if(req.method!=='Get'){
+this.CacheService.invalidachack
+return next.handle(req);
+}
+const cachedrespone:HttpResponse<any>=
+this.cacheservice.get(req.url)
+if(cacheresppnse){
+return of(cachedresponse); of d men rjx methd 
+//mohm hha msh return next.handle 3lshn
+anta msh htkml intercept ,,anta rag3 tany
+llclient
+lwo mfesh data fl cache ,,hro7 agbha men
+lserver w a7otha fl cache
+hna h3ml b2a return nex.handle(
+------------------------
+
+
+
+
+

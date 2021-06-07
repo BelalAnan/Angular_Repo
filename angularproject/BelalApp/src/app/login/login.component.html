@@ -1,0 +1,94 @@
+
+<div class="container">
+
+<div class="card mt-5" style="width:25rem; text-align: center; position: relative; left: 300px;">
+
+	<div class="card-header">
+		<h3 class="text-secondary"> Log in</h3> 
+
+	</div>
+	<div class="card-body">
+		<form novalidate  (ngSubmit)="save(signinform)" #signinform="ngForm">
+			<div class="form-group row mb-2">
+					<span class="input-group-text"><i class="fa fa-user"></i></span>
+
+
+			
+				<div class="col-md-8">
+				    <input class="form-control"  id="UserName" type="text"
+                        placeholder="User Name is required" required 
+                         minlength="3"
+                          [(ngModel)]=user.UserName name="UserName"
+                           #UsernameVar="ngModel"
+                           [ngClass]="{'is-invalid':(UsernameVar.touched||UsernameVar.dirty)&&!UsernameVar.valid}"
+                           />
+						   <span class="invalid-feedback">
+							<span style="width: 50%;" *ngIf="UsernameVar.errors?.required">
+								please enter your name
+							</span>
+							<span *ngIf="UsernameVar.errors?.minlength">
+								min length should be 3 characters
+							</span>
+						 </span>      
+	
+				</div>
+			</div>       
+			<div class="form-group row mb-2">
+
+				<span class="input-group-text"><i class="fa fa-key"></i></span>
+
+				<div class="col-md-8">
+					<input class="form-control" id="Password" type="password"
+					placeholder="Password is required" required 
+					 minlength="3"
+					  [(ngModel)]=user.password name="password"
+					   #passwordVar="ngModel"
+					   [ngClass]="{'is-invalid':(passwordVar.touched||passwordVar.dirty)&&!passwordVar.valid}"
+					   />
+						<span class="invalid-feedback">
+							<span *ngIf="passwordVar.errors?.required">
+								please enter your first name
+							</span>
+							<span *ngIf="passwordVar.errors?.minlength">
+								min length should be 3 characters
+							</span>
+							
+						</span>
+	
+	
+				</div>
+				
+			</div>
+	
+	
+	
+			
+		
+			
+		   <div class="form-group row mb-2">
+			   <div class="offset-md-2 col-md-4">
+				   <button class="btn float-right  btn-dark"
+				   type="submit" style="width:80px"
+				   [title]="signinform.valid?'save your entered data':'disabled until form data is valid'"
+				   [disabled]="!signinform.valid">Log in
+				   </button>
+				
+
+			   </div>
+	
+		   </div>
+		   
+		 
+			
+		</form>
+		<div *ngIf="!invalidlogin">
+			<span  class="text-danger">User name or Password is incorrect</span>
+			</div>
+		</div>
+		</div>
+
+<div class="innercontainer">
+
+</div>		
+</div>
+

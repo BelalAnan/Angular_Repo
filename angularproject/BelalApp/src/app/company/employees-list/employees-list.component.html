@@ -1,0 +1,32 @@
+<table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">DepartmentName</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor='let employee of Employees'>
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.address}}</td>
+        <td>{{employee.department.name}} </td>
+        
+        <td> <a [routerLink]="['/EmpDetail',employee.id]"><button class="btn btn-success"> Edit </button></a></td>
+      <!-- <td> <button (click)="DeleteEmp(employee.id)" class="btn btn-warning"> Delete </button></td>--> 
+  <td><a [routerLink]="['/Empdelete',employee.id]"> <button class="btn btn-warning"> Delete </button></a></td>
+
+      </tr>
+     
+    </tbody>
+  </table>
+  <button class="btn btn-outline-primary"
+  style="width:90px"
+  [routerLink]="['/EmpCreate']">
+Add Employee
+</button>

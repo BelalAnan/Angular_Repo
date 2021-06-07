@@ -1,0 +1,78 @@
+<div class="card mt-5 bg-light">
+
+
+    <div class="card-header">
+       Employee Details
+    </div>
+    <div class="card-body">
+<form class="form-group mt-3" (ngSubmit)="prosub(Productform)" #Productform="ngForm">
+    
+    <div class="form-group row mb-2">
+      <label  class="form-label" for="id"><b>ID</b></label>
+
+    <input type="text" class="form-control"
+      name="id" *ngIf="product" [(ngModel)]=product.productId #productIdvar="ngModel" />
+  </div>
+   
+    <div class="form-group row mb-2">
+        <label class="form-label" for="productName"><b>Name</b></label>
+
+      <input type="text" class="form-control"
+        name="productName" *ngIf="product" [(ngModel)]= product.productName #productNamevar="ngModel" />
+    </div>
+  
+    <!-- Email input -->
+    <div class="form-group row mb-2">
+        <label class="form-label"  for="productCode"> <b>Code</b></label>
+
+        <input *ngIf="product" type="email" [(ngModel)]= product.productCode name="productCode" class="form-control"
+        #productCodevar="ngModel" />
+    </div>
+    <div class="form-group row mb-2">
+        <label class="form-label"  for="releaseDate"> <b>releaseDate</b></label>
+
+        <input *ngIf="product" type="datetime" [(ngModel)]= product.releaseDate name="releaseDate" class="form-control"
+        #releaseDatevar="ngModel" />
+    </div>
+    <div class="form-group row mb-2">
+        <label class="form-label"  for="description"> <b>description</b></label>
+
+        <input *ngIf="product" type="text" [(ngModel)]= product.description name="description" class="form-control"
+        #descriptionvar="ngModel" />
+    </div>
+    <div class="form-group row mb-2">
+        <label class="form-label"  for="price"> <b>price</b></label>
+
+        <input *ngIf="product" type="text" [(ngModel)]= product.price name="price" class="form-control"
+        #pricevar="ngModel" />
+    </div>
+    <div class="form-group row mb-2">
+        <label class="form-label"  for=" starrating"> <b> starrating</b></label>
+
+        <input *ngIf="product" type="number" [(ngModel)]= product.starrating name="starrating" class="form-control"
+        #starratingvar="ngModel" />
+    </div>
+    <div class="form-group row mb-2">
+        <label class="form-label"  for="imageurl"> <b> imageurl</b></label>
+
+        <input *ngIf="product" type="text" [(ngModel)]= product.imageurl name="imageurl" class="form-control"
+        #imageurlvar="ngModel" />
+    </div>
+  
+  
+  <br>
+    <button type="submit"  class="btn btn-primary btn-block mb-4">Update Product</button>
+    <br>
+    <button type="button" (onclick)="returnback()"  class="btn btn-secondary btn-block mb-4">return Back</button>
+
+  </form>
+</div>
+
+</div>
+<div>
+  <br>Dirty: {{Productform.dirty}}
+<br>touched: {{Productform.touched}}
+<br>valid: {{Productform.valid}}
+
+<br>value: {{Productform.value|json}}
+</div>

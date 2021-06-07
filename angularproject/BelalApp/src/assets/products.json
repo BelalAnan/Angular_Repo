@@ -1,0 +1,43 @@
+[
+    {
+      "ProductID":1,
+      "ProductName":"Garden-cart",
+      "ProductCode":4796,
+      "releaseDate":"jan 13  , 2021",
+      "description":"15 gallon capacity",
+      "price":32.99,
+      "Starrating":4.2,
+      "imageurl":"assets/images/garden_cart.jpg"
+
+    },
+    {
+      "ProductID":2,
+      "ProductName":"Hammer",
+      "ProductCode":4870,
+      "releaseDate":"March 18, 2021",
+      "description":"Curved clow steel Hammer",
+      "price":47.99,
+      "Starrating":4.8,
+      "imageurl":"assets/images/hammer.jpg"
+    },
+    {
+        "ProductID":2,
+        "ProductName":"Hammer",
+        "ProductCode":4870,
+        "releaseDate":"March 18, 2021",
+        "description":"Curved clow steel Hammer",
+        "price":47.99,
+        "Starrating":4.8,
+        "imageurl":"assets/images/hammer.jpg"
+    },
+    {
+        "ProductID":2,
+        "ProductName":"Hammer",
+        "ProductCode":4870,
+        "releaseDate":"March 18, 2021",
+        "description":"Curved clow steel Hammer",
+        "price":47.99,
+        "Starrating":4.8,
+        "imageurl":"assets/images/hammer.jpg"
+    }
+]

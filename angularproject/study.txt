@@ -1,0 +1,564 @@
+npm :package manager for javascript applcations
+install libraries ,package ,applications
+-------------------------------------------
+angular cli commond line interface bynlo 3n tre2 npm
+----------------------------------
+angular application is often single page application
+Caleed spa 3lshn hea contains the main page
+for application ,often the only web page 
+of application,,bs hoa hyban lluser aknna 3ndna
+pages kter,,
+bs fel 72e2a hoa index.html w7d w bnrmy feha
+kza html
+-----------------------------------
+directive : da lcustom html element 
+lhea lcomponent lma t7otha fe tag element
+-------------------------------------
+1-npm install bootstrap font-awesome
+2-styles/.css 
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+------------------------------------------
+add component products
+ng g c product-list
+---------------
+pageTitle:string='product List';
+fl html 
+<div class='card'>
+{{PageTitle}}  
+shofha
+ 
+</div>
+<table>
+</table>
+--------------------------
+build in directive(structural directie)
+*ngIf ,,to add or remove element at dom
+*ngFor ="let product of products"
+of d iterate 3la  items fl array
+let product in ...hygblk lindex
+0,1,2
+---------------azay 
+
+--------------------------
+lma tst5dm lcomponent fl app.component
+kda anta ast5dmt component as a directive
+-----------------------------------
+binding anwa3 menha 
+interpolation 
+<h1>{{ }}</h1> one way binding from class
+to template ,,el goa lcurly brackets
+asmo Template Expression ,,5ly balk
+da read only 
+----------------------------------------------------------------
+lfat kan data binding ,,hanshof b2a l property binding ,event binding w kda
+-----------------------------------------------------
+property binding ,,allow to set property of element
+to value of template expression
+<img [src]='product.imageurl'>
+momken nfs ntega a3mlha b interpolation
+<img src={{product.imageurl}}>
+bs meza property binding any momken a3ml kda
+ <input [disable]='isdiabled' /> abseha ltrue or false
+property binding zay interpolation one way binding brdo
+allows us to control out template dom from our component
+--------------------------
+<img [src]="product.imageurl">  //propertybinding
+       [title]='product.productname'
+   [style.width.px]='imagewidth'
+ [style.margin.px]=''
+-------------
+imagewidth:number=50;
+imagemargin:number=2;
+-------------------------------------------------------------------
+event binding 
+showimage=false;
+toggleimage()
+{
+this.showimage=!this.showimage;
+}
+--logic to add or remove element from dom is *ngIf
+----------------------------------------------
+two ways binding 
+[(ngModel)]='listfilter 
+ngmodel feha property binding[] () event binding
+ng model is an angular dirctive;
+listfilter='cart';
+<input type='text'
+  [(ngModel)]='listfilter' //ngmode
+not an input property of model,angular
+can't find ng module directive
+ngmodel directive is part of angular module
+for forms called form module 
+fa lazm t3mlha import fl app.module
+import {FormsModule} from '@angular/forms'
+imports:[
+FormsModule
+]
+components and pipes and directives 
+ lana 3mlha declared fel declarations
+bs langular 3mlha awo third party hoa l3mlha
+tt7t fel imports
+
+filtered by :{{listfilter}}
+----------------
+-----pipes 
+lma t3ml data binding men class to view 
+sahl gedan bs feha mosklha ldata msh f 
+format kwys en yt3mlha display fa hna bygy dor
+lpipes ,,lpipes bt5ly shkl l7aga helwo abl mtt3rd
+build in pipes : data ,number,decimal
+percent,currency,json (content of object) as json
+-----------------------------
+pipe character b2a l hea d | 
+lwo 3ayez lower case | 
+{{product.productcode|lowercase}}
+chain pipe
+{{product.price|currency|lowercase}}
+some pipes support parameters 
+|currency:'USD':'symbol':'1.2-2'}}
+------------------------------------ 
+         types of databinding
+1-interpolation from component to dom {{}}
+2-propertybinding <img [src]=''> from component to
+dom
+3-event binding <button (click)='toggle()'>
+from dom to component
+
+4-twoway binding <input [(ngModel)]='listfilter'
+-------------------------
+new file name product.ts
+export interface IProduct
+{
+ProductId:number;
+ProductName:string;
+ProductCode:string;
+releaseDate:string;
+price:number;
+description:String;
+starRating:
+
+}
+------------------------
+mezt linterface da enk ht5ly larray implement 
+interface fa ay property feha msh zay lfo2
+hygblk compiler error bdl run time error ,
+kda lcomponent bt3y b2a strong typing
+products:IProduct[]=[
+{
+
+}
+--------------------------------------
+thead
+{
+color:   ;
+}
+---------------------------------------
+component life cycle
+create-render -create and render children -process changes-
+destroy
+
+lifecycle hook is interface we implement 
+it to write code when 
+component life cycle event occurs
+--------------------------
+oninit : preform component initialization
+retrieve data
+onchanges:perform action after change to 
+input propertirs
+ondestrory:clean up
+---------------
+implements OnInit
+ngOnInit() ..each life cycle hook interface
+defines on method 
+ngOninit():void
+{
+console.log('in onint');
+}
+---------------------------------------------
+custom pipe 
+------------
+ng g p convert-to-pipes
+1-file .ts
+export class co implement pipetransform
+{
+transform(value:string,character:string):sting{
+return value.replace(character,' ');
+**character da fl parameter lmwgod 3ndk
+----------------------------------------------
+getters and setters
+amout:number=0;
+private _amount:number=0;
+get amount():number{
+return this._amount;
+}
+set amount(value:number)
+{
+this._amount=value;
+}
+}
+------------------------------------------------
+nested components|
+-----------------
+component as a directive 
+ya3ny t5odha ka selector 3ndk
+------------------
+hn3ml star component w n3ml nested m3 product component
+outer component da parent 
+inner component nested child container
+-----------------------------
+ng g c star
+css
+.crop
+{
+overflow:hidden;
+}
+.div
+{
+cursor:pointer;
+}
+fl ts
+-----------------
+shof lhtml  
+
+
+ implements OnChanges {
+
+rating : number=4;
+cropWidth:number=75;
+ngOnChanges():void{
+this.cropwidth=this.rating *75/5;
+
+}
+--------------------------
+zawd starcomponent fl decalartions
+<td>
+ <pm-star></pm-star> 7otha fl product component
+</td>
+}
+//nested component btklm m3 lcontainer bt3ha
+using input property ,,,
+nested component bt5rg ldata b2a llcontainer 
+by emitting events ,,lma ydos 3la star
+we want to emit event to notifiy container
+fa ,,input decrotor ,,to decorate any property
+in nested component class
+container passes data to nested using property
+bining
+[rating]='product.starRating'
+@Input() rating:number=0;
+ngonchages() bt7sl kol lma lcontainer data
+changed
+.....hpassy event from nested compoentd to parent
+3ayez a3ml event kol mra user click on stars
+b3ml output and the only way nested container
+can talk parent is by emtting an event
+by using event emitter object
+@output() notify : EventEmitter<string>=
+new EventEmitter<string>(); 
+------------------------
+linput wl output dol momken nklm 3nhom as
+public api of nested components
+----------------------------
+property binding to pass data to nested component
+event binding to respond to events from nested component
+3rft event fl nested w adetlo parameter w ast2blt lparameter
+da fl container bra 
+when user click on stars ,,only star component
+recieve click event,,star component emit 
+event 
+this.notify.emit('clicked!');
+bt3rf event w lma tdos 3leha bt3mlo emit   
+$event d bt5od lparameter bt3 el event
+ng g s 
+-------------------
+service:independent from any component
+momken n3mml object men service fl component
+awo angular y3ml single ton object w n3ml register w
+y3ml create llobject
+-----------
+create service:
+define metadata:
+import what we need
+lazm bs fo2 lservice t3ml @Injectable
+asmha productService
+----------------------
+root injecter 3la application kolo
+component injector 3laa component and its child only
+------------bt2olo
+@Injectable(P
+providedin:'root'
+})
+providers:[ProductsService] fl appmodeule awo produclist
+-------------------------------------------------------------------------------------------------------------------------------
+
+ http with observables
+Reactive Extensions :
+RXJS 
+library for composing data using 
+observable sequences
+and transforming data using operators
+----------------------------
+d sabha linq operators kda
+angular use reactive extensions for 
+working with data ...asp using linq
+synchronous :real time
+asynchronous : no immediate response
+http requet are async
+fa lazm lma tb3t request llserver 
+t2olo notifiy me when the response arrives
+-------------------
+w lazm tb3t notify tny llserver lma data tgelk
+t2olo gtlk
+http be3ml requests
+tb notifiy be3mlha azay
+bn3mlha observable sequence 
+collection of items overtime
+doesn't return items
+emitted items can be observed over time
+ldata msh btrg3 f array ,,la d btrg3 f sequence wra b3d kda
+--------------
+observable do nothing  until we subscribe
+when we subscribe ,,observable will emit
+--------------------
+1-start observable (subscribe)
+2-pipe emitted items throught set of operators
+3-process notification ,next error,complete
+4-stop observable(un subscribe)
+-------------------
+lazm t3ml subscribe llobserver returns from the service
+obsrers are lazy doesn't emit values unitl we
+subscribe btrg3 object bs ana 3ayez arg3 array
+fa h3mlha b map operator we can transfer item in observable 
+by using map w hyg3 array of object msh jason
+-----------------------------------
+steps : 
+1-import {HttpClientModule}
+2-ctr(privte http:httpclient){}
+3-private producturl='api/products/products.json';
+4-angular.json
+  "assets":[
+"src/api"
+]
+5-getproducts():ObservableIProduct[]{
+return this.http.get<IProduct[]>(this.productUrl);
+}
+6-
+tap tgblk kol lobjects w catch error w btgbhom men pipe
+-------------------------------------------
+
+
+notification :
+three types ,,,
+----------------------------------------------------------------
+create new component 
+gn g c 
+<div class='card'>
+ <div class='card
+
+
+shofha kda
+-------------------------
+import {RouterModule}
+ngmodule
+RouterModule
+-------------
+NgModule({
+imports:[
+RouterModule.ForRoot([])
+]
+})
+route object
+3ndhA Path : wkol path m3mlo bind kda
+b component ,,display when routea activated
+---------
+path:'products/:id da lparameter
+path:'welcome'
+path: ' ' ,redirectTo:'welcome'
+path:'**' ,component :pageNotFound
+order befr2 gedannn
+more specific should be before less specific
+------------------------
+configuring routes:
+fl index.html 
+set 
+1-<base href="/"> 
+2-RouterModule.forRoot([
+{path:'product',component:prductlistcomponent},
+{path:'w aktn l 4 stor hna b2a
+
+])
+-------------------------
+navigation momken tb2a menu
+link ,image or toolbar or navigation menu
+[routerLink]="/welcome" da lpath
+------------------------
+fl app.components
+7ot navigation lmenu 
+<a routerlink='/welcome'>
+<a routerlink='/products'>
+-------fl app.components
+<div class=container'>
+<router-outlet></router-outlet>
+</div>
+--------------------------------------------------------
+passing route with parameter
+path:'products/:id'
+[routerLink]="['/products',productId]">
+TO GET parameter from route
+constructor(private route:ActivatedRoute){}
+to read parameter one time
+this.route.snapshot.paraMap.get('id');
+----------------------
+read emitted parameters as they change
+this.route.paraMap.subscribe(parms=>console.log
+------------
+<a [rouerLink]="['/products',product.productId]">
+-----------------------
+product-detail
+------
+constructor(private router : ActivatedRoute){}
+ngOnInit():void{
+const id=Number(this.route.snapshot.paraMap.get('id'));
+}
+-----------------------------------
+common error
+product:IProduct|undefined; momken undefined grb kda
+product?.productName d bt3ml check null
+or 
+<div class='card' *ngIf='produt'>
+   lwo product b null el element kolo msh hyban 
+fl dom asln
+------------------------------------------------
+(back button)
+-------------
+Router da lberg3k,,a3ml object meno
+(
+this.router.navigate['/products']);
+yb2a kda 3ndna two classes w7d asmo ActivateRoute 
+wl tany asmo Router 
+activaterouter da lbe5lek t2ra parameter |
+Router da be3mlk navigate between pages  |
+----------------------------------------
+onback():void{
+this.router.navigate['/products']
+}
+----------------------
+limit access to route
+authorization y3ny
+angular provide :canActivate
+   ------
+ generate canactivate guard
+ng g g product-detail 
+guard da service fa lazm t3ml inject
+-------
+constructor(private router:Router)
+{
+
+}
+------------
+a3ml register lel imports
+{
+canActivate:[ProductDetailGuard]
+}
+-------------------
+what's angular module : 
+class with ngmodule decorator
+to organize the pieces of our applicaion
+declare component and directive and pipe 
+-------------------
+<li> <a routerLink='/welcome'>
+------------------------------------------------
+every application must bootstrap one component and should be used
+in app module bs 
+=====================
+every component ,directive ,pipe must belong to one 
+and only one angular module
+---------------
+all declared components ,directive ,pipes are private
+by default 
+only accesible to other components ,directive,pipes 
+declared in same module
+---------------------mohma
+imported a module doesn't provide access to it's imported module
+-----------------------
+browser module bt3mlo import fl app module bs 
+5er kda a3ml import l common module 3lshn *ng for ,*ng if
+--------
+formmodule 3lshn ngModel[()] lhea two way binding
+------------------------
+hoa ana 3ayez y5ly project bt3k mfsol f module kda lw7do malhosh 3laka bl app module w asmo feature module 
+ng g m  product -m app
+pull this module into app module 
+f ht3ml update llapp
+w ht7t fl imports bt3tha import
+llproduct module
+wl RouterModule bdl ma knt 
+.forroot([
+])
+htb2a
+.forchild([
+])
+----------------------
+ana b3d ma5ls lfeature module lwo 3wzt azwd module tany fa ht7g a3ml import 
+llmodule zay form module w 7agat tanya kter common
+fa 3lshn kda ls7 a3ml 
+sharedmodule
+--------------------------------------------
+hna ng g m shared/shared --flat -m products/product.module
+----------
+kda app module b2a feha 
+browser module :
+w da lbrowser el every browser application must import
+w bt3ml import brdo llcommonmodule which declares and exports
+directive such as ngIf and ngFor
+-----------------------------------------
+Angular Cli |
+------------|
+ngm install -g @angular/cli (kda btnzlo global)
+ng help (3lshn ygblk kol lcommands)
+ng v (ygblk lversion)
+ng new hello-world --prefix hw
+e2e :file of end to end test of application
+assets :ay sor bt7otha fl application
+ng serve :
+- compile appliaction 
+-turning our type script code into
+javascript code
+-generate application bundles from 
+javascript
+-start local web server
+-serve  application from memory
+-rebuild on file changes
+-----------------
+ng serve -o  (htft7 application lw7do)
+lfiles d kolha generated on memory
+msh disk
+-------------------------------
+ng build ht3ml generate lactual files
+--kol lbundles lat3mlhaa create
+b ng serve
+htro7 ttrf3 3la broswer b3d aked
+ma tta7wl ljavascript code
+ng g c 
+ng g d   directive
+ng g g route guards
+ng g i interface
+ng g m moule
+ng g p pipes
+ng g s services
+------------------------------------
+ng test( test code bt3ml generate 
+several test lwo kolo ng7 hy2lb a5dr)
+using karma javascript 
+-------------------------------------
+ng e2e test end to end using 
+protractor
+--------------------------------------
+ng build (used for deploy for user)
+output t2reban hykon zay ng serve
+command(hygblk bundlesjavascipt)
+ng build --prod 
+kda hy3ml bundles w m3ha minfigying 
+w y3ml remove llun used pipes
+ 

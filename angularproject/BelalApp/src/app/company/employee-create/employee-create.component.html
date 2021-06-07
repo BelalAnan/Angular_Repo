@@ -1,0 +1,66 @@
+<div class="card bg-light text-dark text-center mt-5">
+
+
+  <div class="card-header">
+  New  Employee 
+  </div>
+  <div class="card-body">
+<form class="form-group  mt-3" (ngSubmit)="Empsub(Employeeform)" #Employeeform="ngForm">
+  
+  <!--<div class="form-group row mb-2">
+    <label class="form-label" for="id">ID</label>
+
+  <input type="text" class="form-control"
+    name="id" *ngIf="Employee" [(ngModel)]=Employee.id #Empoloyeenamevar="ngModel" />
+</div>-->
+ 
+  <div class="form-group row mb-2">
+      <label class="form-label" for="name"><b>Name</b></label>
+
+    <input type="text" class="form-control"
+      name="name" *ngIf="Employee" [(ngModel)]=Employee.name #Empoloyeenamevar="ngModel" />
+  </div>
+
+  <div class="form-group row mb-2">
+      <label class="form-label"  for="address"> <b>Address</b></label>
+
+      <input *ngIf="Employee" type="email" [(ngModel)]=Employee.address name="address" class="form-control"
+      #Employeeaddrressvar="ngModel" />
+  </div>
+  <div class="form-group row mb-2">
+    <label class="form-label"  for="deptname"> <b>Department name</b> </label>
+
+  <select [(ngModel)]=Employee.departmentId  name="departmentId" id="departmentId" class="form-control">
+    <option *ngFor="let dept of Department" [value]="dept.id">{{dept.name}}</option>
+    
+  </select>
+  
+</div>
+<br> 
+
+   <!--
+  <div class="form-group row mb-2">
+      <label class="form-label" for="EmployeeDepartment">Department ID </label>
+     <br>
+   <input type="number" *ngIf="Employee"  [(ngModel)]=Employee.departmentId  class="form-control"
+   #empdepartmentid="ngModel" name="departmentid" />
+    
+  </div>
+-->
+ 
+
+  <button type="submit"  class="btn btn-primary btn-block mb-4">Create Employee</button>
+</form>
+</div>
+
+</div>
+<div>
+<br>Dirty: {{Employeeform.dirty}}
+<br>touched: {{Employeeform.touched}}
+<br>valid: {{Employeeform.valid}}
+
+<br>value: {{Employeeform.value|json}}
+</div>
+
+
+

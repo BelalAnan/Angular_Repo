@@ -1,0 +1,62 @@
+template :using data binding 3ady
+put the responsibility of form on template
+lhea basic html and data binding 
+1-easy to use
+2-two way data binding
+
+------------------------------------------
+reactive(model-driven): kolo fl 
+component class ..data and validation in 
+component
+1-provide more flexible
+2-more complex 
+3-no data binding
+-----------------------------------------
+(value changed)
+fl form input elemets 3ndha 7aga asmha
+element states,,if the value 
+of input element unchanged
+the state of input element pristine
+w lwo changed value yb2 linput element 
+dirty,,lwo element w7d dirty
+lform kolha dirty
+-----------------------------------------
+(validaity)
+state valid or state errors 
+
+-----------------------------------------
+(visited)
+touched state or untouched state
+--------------------
+form model d lform kolha feha kol 7aga
+-formcontrol kol object email msln formcontrol
+firstname da formcontrol tany
+-feha form value 
+da object feha kol property wl value bt3ha 
+w feh form state
+pristine wala dirty w touch wla untouched
+w valid wala errors
+-----------------------
+directives for form 
+------------
+[ngclass]="{'is-invalid':(
+laazm tgbha men (FormModule)
+ngForm ->to access form model mwgoa be defult w msh bnktbh
+ngModel ->to access two way binding  w bt3ml object men l input da feha kol 7aga 5sa bl input b lazm t3ml name property gambha (form control)
+ngModelGroup ->grouping input element
+<form </form> -->formgroup
+------------------------
+<form>
+<form (ngSubmit)="save()"> //event binding   ngForm //momken tchelha
+ <input [(ngModel)]="customer.firstname"
+[ngClass]="{'is-invalid' :fistname.touched&&!f....}
+ay 7aga fehom not valid input type kolo 
+not valid and field turns red
+//b3ml kda 3lshn lazm at2kd an input type
+mt2lbash error abl ma luser yktb 7aga asln
+</form>
+------------------------------- simply akbr fr2 men reactive form and template driven form
+an anta kont btktb ngModel f kol input  w da kan be3ml object men formcontrol implicitly 
+bs hna b2a lwad3 mo5tlf fl reactive anta lazm t3ml create llobject of form control explicit b nfsk
+
+

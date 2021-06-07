@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 d-flex offset-4 ">
+          
+            <div class="card mt-2"  style="width: 300px;">
+                <img
+                  src="../../../assets/{{book?.imageLink}}" height="250px"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title"><b>{{book?.title}}</b></h5>
+                  <p class="card-text">
+                   <p> <b>Author :</b> {{book?.author}}</p>
+                   <p><b>Language :</b> {{book?.language}}</p>
+                   <p><b>Pages :</b> {{book?.pages}}</p>
+                   <p><b>Production Year :</b> {{book?.year}}</p>
+                   <p><b>Price :</b> {{price|currency}}</p>
+
+                                
+                   <a [routerLink]="['/book',book?.id]"><button class="btn btn-success"> Buy </button> </a>
+                   &nbsp;&nbsp;&nbsp;&nbsp;
+                   <button class="btn btn-warning" (click)=return()>Go Back</button>
+
+                </div>
+              </div>
+            
+            </div>
+        </div>
+    
+    </div>

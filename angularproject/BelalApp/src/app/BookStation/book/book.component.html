@@ -1,0 +1,46 @@
+<h1>Shop</h1>
+<p><b> {{PageTitle}}</b></p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md -4 d-flex " *ngFor="let item of books">
+          
+            <div class="card mt-2"  style="width: 300px;">
+                <img
+                  src="../../../assets/{{item.imageLink}}" height="250px"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title"><b>{{item.title}}</b></h5>
+                  <p class="card-text">
+                   <p> <b>Author :</b> {{item.author}}</p>
+                   <p><b>Language :</b> {{item.language}}</p>
+                                
+                   <a [routerLink]="['/book',item.id]"><button class="btn btn-success"> Buy </button> </a>
+
+                </div>
+              </div>
+            
+            </div>
+        </div>
+    
+    </div>
+
+
+       
+<!--<div *ngFor="let item of books">
+    <div class="col-md-4">
+
+   <div class="border border primary bg-light rounded mt-2 p-1 " width="700px">
+
+   <!-- <img src="../../../assets/images/beloved.jpg" class="img-fluid" width="250px" style="height:200px" />-
+
+       <h3> Language : {{item.language}}</h3>
+       <h3>Pages : {{item.pages}}</h3>
+    
+          <p>Price :{{item.title}}</p>
+         <p>Year of Production: {{item.year}}</p>
+      
+       <button class="btn btn-success"> Buy </button>
+   </div>
+</div>-->
