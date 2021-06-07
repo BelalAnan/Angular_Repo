@@ -11,7 +11,8 @@ import { ProductService } from '../Services/ProductServices/product.service';
   styleUrls: ['./productcreate.component.css']
 })
 export class ProductcreateComponent implements OnInit {
-product : IProduct|undefined
+product : IProduct={productId:0,productName:"",productCode:0,description:"",releaseDate:"2019-06-18T10:34:09",price:30,starrating:0
+,imageurl:"hammer.jpg"}
 sub:Subscription|undefined
 
   constructor(private prouctserv:ProductService,private router:Router) { }
@@ -23,7 +24,8 @@ sub:Subscription|undefined
   this.sub= this.prouctserv.AddProduct(Product.value).subscribe({
     next:(res)=>this.product=res,
     error:(err)=>console.log(err),
-    complete:()=>console.log("all done")
+    complete:()=>this.router.navigate(['products'])
+
   })
   }
   returnback()
