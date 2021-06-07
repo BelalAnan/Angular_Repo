@@ -1,4 +1,6 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../Services/ProductServices/product.service';
 import { IProduct } from './product';
@@ -34,7 +36,7 @@ export class ProductlistComponent implements OnInit , OnDestroy {
     
 
   
-  constructor(private pservice:ProductService) { }
+  constructor(private pservice:ProductService,private router:Router) { }
 
 
   ngOnInit(): void {
@@ -80,6 +82,10 @@ Myfun(message:string):void
 {
 this.PageTitle="Product List  ";
 this.PageTitle+=message;
+}
+createnew()
+{
+this.router.navigate(['productcreate'])
 }
 }
 

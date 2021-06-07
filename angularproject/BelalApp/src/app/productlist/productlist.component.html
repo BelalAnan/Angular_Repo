@@ -11,12 +11,17 @@
        </div>
    </div>
    <div class="row">
-       <div class="col-md-6">
-           <h4> filtered by : {{listfilter}} </h4>
+       <div class="col-md-12 text-center">
+         <!--  <h4> filtered by : {{listfilter}} </h4> -->
+         <button class="btn btn-success" style="width: 150px;" (click)="createnew()" >
+            Add Product
+         </button>
        </div>
+      
 
    </div>
-   <div class="table-responsive" *ngIf="products.length>0">
+  
+   <div class="table-responsive mt-3" *ngIf="products.length>0">
        <table class="table table-bordered" >
         <thead>
             <tr>

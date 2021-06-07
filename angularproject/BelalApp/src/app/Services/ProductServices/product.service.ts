@@ -58,7 +58,18 @@ export class ProductService {
     })
    })
   }
+  AddProduct(product:IProduct):Observable<IProduct>
+  {
+    var token= localStorage.getItem("token");
 
+    return this.http.post<IProduct>(this.url,product,{
+     headers:new HttpHeaders({
+      'Authorization':'Bearer '+token,
+      'Content-Type':'application/json'
+    })})
+ 
+  }
+  
   
 
 private handleError(err:HttpErrorResponse)

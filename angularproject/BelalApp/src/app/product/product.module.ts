@@ -7,6 +7,7 @@ import {ProductDetailGuard} from '../product-detail.guard';
 import { SharedModule } from '../shared/shared.module';
 import { ProducteditComponent } from '../productedit/productedit.component';
 import { AuthguardService } from '../Services/AuthGuardService/authguard.service';
+import { ProductcreateComponent } from '../productcreate/productcreate.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AuthguardService } from '../Services/AuthGuardService/authguard.service
     ProductlistComponent,
     ConvertToSpacesPipe,
     ProductDetailComponent,
-    ProducteditComponent
+    ProducteditComponent,
+    ProductcreateComponent
     
   ],
   imports: [
@@ -25,7 +27,8 @@ import { AuthguardService } from '../Services/AuthGuardService/authguard.service
       component: ProductDetailComponent},
       {path:'prodedit/:id',
        canActivate:[AuthguardService],
-      component:ProducteditComponent}
+      component:ProducteditComponent},
+      {path:'productcreate',canActivate:[AuthguardService],component:ProductcreateComponent}
   
      
     ]),

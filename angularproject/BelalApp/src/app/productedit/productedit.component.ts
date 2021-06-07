@@ -27,15 +27,18 @@ export class ProducteditComponent implements OnInit {
   }
     prosub(product:NgForm)
     {
+      console.log(product.value);
        this.sub=this.productservice.UpdateProduct(product.value).subscribe({
          next:()=>console.log("update product"),
          error:(err)=>console.log(err),
          complete:()=>console.log("done")
   
     })
+    this.router.navigate(['/products'])
     }
     returnback()
     {
+      console.log("i should return back")
       this.router.navigate(['/products'])
     }
 
