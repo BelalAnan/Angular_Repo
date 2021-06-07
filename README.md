@@ -7,5 +7,5 @@ This is a repo of angular project including all features of angular with Associa
 
 * many modules 7 modules with shared module and main module
 * Authorization and authentication between angular and asp.net core 
-* Cashing requests and responses between the asp Api angular
+* Cashing requests and responses between the asp Api and  angular
 * using interceptors
