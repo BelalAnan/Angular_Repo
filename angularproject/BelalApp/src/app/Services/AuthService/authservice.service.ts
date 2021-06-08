@@ -7,6 +7,7 @@ import { IUser } from 'src/app/login/iuser';
 import {catchError,tap} from 'rxjs/operators';
 import { IToken } from 'src/app/login/itoken';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http'
+import { IRegisteruser } from 'src/app/register/iregisteruser';
 
 
 
@@ -19,6 +20,7 @@ user:IUser={UserName:"",password:""}
 obj:IToken|undefined
 
 private url ='http://localhost:4444/api/accounts';
+private url2='http://localhost:4444/api/register';
 
 
   constructor(private http:HttpClient,private jwtservice:JwtHelperService) { }
@@ -78,6 +80,10 @@ private url ='http://localhost:4444/api/accounts';
      {
           return new JwtHelperService().decodeToken(tokens);
      }
+   }
+   Signup(user:IRegisteruser):Observable<void>
+   {
+     return this.http.post<void>(this.url2,user)
    }
    
 

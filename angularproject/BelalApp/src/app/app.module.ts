@@ -14,11 +14,12 @@ import {CacheInterceptor} from './cache.interceptor'
 import {CustomerModule} from '../app/customer/customer.module';
 import {LoginModule} from './login/login.module';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    WelcomeComponent
+    WelcomeComponent, RegisterComponent
   ],
   imports: [
     BrowserModule,
