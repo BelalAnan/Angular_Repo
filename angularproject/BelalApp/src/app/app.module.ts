@@ -19,7 +19,7 @@ import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent, 
-    WelcomeComponent, RegisterComponent
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

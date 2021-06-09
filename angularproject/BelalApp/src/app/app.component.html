@@ -19,10 +19,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link text-warning" routerLink='/Employees'>Employees</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-warning" routerLink='/Customers'>Sign-up</a>
-          </li>
+          </li>       
           <li class="nav-item" *ngIf="!auth.Isloggedin()">
             <a class="nav-link text-warning"  routerLink='/Login'>Log-In</a>
           </li>
@@ -34,7 +31,15 @@
             <li class="nav-item">
                 <p class="nav-link text-secondary" href="#">  {{auth.Getuser().unique_name}}</p>
             </li>
+         
         </ul>
+        <ul class="navbar-nav mr-auto text-right" *ngIf="!auth.Isloggedin()">
+          <li class="nav-item" *ngIf="!auth.Isloggedin()" >
+            <a class="nav-link text-warning" routerLink='/Signup'>Sign up</a>
+          </li>
+       
+      </ul>
+       
           <li class="nav-item dropdown">
           
             <ul class="dropdown-menu text-warning" aria-labelledby="navbarDropdown">

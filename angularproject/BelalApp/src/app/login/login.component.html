@@ -43,7 +43,7 @@
 					 minlength="3"
 					  [(ngModel)]=user.password name="password"
 					   #passwordVar="ngModel"
-					   [ngClass]="{'is-invalid':(passwordVar.touched||passwordVar.dirty)&&!passwordVar.valid}"
+					[ngClass]="{'is-invalid':(passwordVar.touched||passwordVar.dirty)&&!passwordVar.valid}"
 					   />
 						<span class="invalid-feedback">
 							<span *ngIf="passwordVar.errors?.required">

@@ -1,5 +1,6 @@
 export interface IRegisteruser {
     UserName:string,
     Email:string,
-    Password:string
+    Password:string,
+    ConfirmPassword:string
 }

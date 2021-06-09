@@ -83,7 +83,13 @@ private url2='http://localhost:4444/api/register';
    }
    Signup(user:IRegisteruser):Observable<void>
    {
-     return this.http.post<void>(this.url2,user)
+     return this.http.post<void>(this.url2,user).pipe(
+      tap(()=>console.log("registering user")),catchError(this.handleError))
+     
+
+
+
+      
    }
    
 

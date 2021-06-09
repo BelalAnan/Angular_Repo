@@ -7,7 +7,7 @@
     
         </div>
         <div class="card-body">
-            <form novalidate  (ngSubmit)="save(signUpForm)" #signinform="ngForm">
+            <form novalidate  (ngSubmit)="save(signUpForm)" #signUpForm="ngForm">
                 <div class="form-group row mb-2">
                         <span class="input-group-text"><i class="fa fa-user"></i></span>
     
@@ -31,7 +31,32 @@
                              </span>      
         
                     </div>
-                </div>       
+                </div>   
+                <div class="form-group row mb-2">
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+
+
+            
+                <div class="col-md-8">
+                    <input class="form-control"  id="Email" type="text"
+                        placeholder="Email is required" required 
+                         minlength="3"
+                          [(ngModel)]=user.Email name="Email"
+                           #EmailVar="ngModel"
+                           [ngClass]="{'is-invalid':(EmailVar.touched||EmailVar.dirty)&&!EmailVar.valid}"
+                           />
+                           <span class="invalid-feedback">
+                            <span style="width: 50%;" *ngIf="EmailVar.errors?.required">
+                                please enter your Email
+                            </span>
+                            <span *ngIf="UsernameVar.errors?.minlength">
+                                min length should be 3 characters
+                            </span>
+                         </span>      
+    
+                </div>
+            </div>   
+                
                 <div class="form-group row mb-2">
     
                     <span class="input-group-text"><i class="fa fa-key"></i></span>
@@ -40,13 +65,41 @@
                         <input class="form-control" id="Password" type="password"
                         placeholder="Password is required" required 
                          minlength="3"
-                          [(ngModel)]=user.password name="password"
+                          [(ngModel)]=user.Password name="password"
                            #passwordVar="ngModel"
                            [ngClass]="{'is-invalid':(passwordVar.touched||passwordVar.dirty)&&!passwordVar.valid}"
                            />
                             <span class="invalid-feedback">
                                 <span *ngIf="passwordVar.errors?.required">
-                                    please enter your first name
+                                    please enter password
+                                </span>
+                                <span *ngIf="passwordVar.errors?.minlength">
+                                    min length should be 3 characters
+                                </span>
+                                
+                            </span>
+        
+        
+                    </div>
+                    
+                </div>
+        
+
+                <div class="form-group row mb-2">
+    
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+    
+                    <div class="col-md-8">
+                        <input class="form-control" id="ConfirmPassword" type="password"
+                        placeholder="Confirm Password" required 
+                         minlength="3"
+                          [(ngModel)]=user.ConfirmPassword name="ConfirmPassword"
+                           #passwordVar="ngModel"
+                           [ngClass]="{'is-invalid':(passwordVar.touched||passwordVar.dirty)&&!passwordVar.valid}"
+                           />
+                            <span class="invalid-feedback">
+                                <span *ngIf="passwordVar.errors?.required">
+                                    please enter password
                                 </span>
                                 <span *ngIf="passwordVar.errors?.minlength">
                                     min length should be 3 characters
@@ -66,10 +119,10 @@
                 
                <div class="form-group row mb-2">
                    <div class="offset-md-2 col-md-4">
-                       <button class="btn float-right  btn-dark"
+                       <button class="btn float-right   btn-danger"
                        type="submit" style="width:80px"
-                       [title]="signinform.valid?'save your entered data':'disabled until form data is valid'"
-                       [disabled]="!signinform.valid">Log in
+                       [title]="signUpForm.valid?'save your entered data':'disabled until form data is valid'"
+                       [disabled]="!signUpForm.valid">Sign up
                        </button>
                     
     
@@ -80,13 +133,11 @@
              
                 
             </form>
-            <div *ngIf="!invalidlogin">
-                <span  class="text-danger">User name or Password is incorrect</span>
-                </div>
-            </div>
+           
             </div>
     
     <div class="innercontainer">
     
     </div>		
     </div>
+
